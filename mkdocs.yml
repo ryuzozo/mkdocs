@@ -3,9 +3,15 @@ site_name: memo
 theme:
   name: material
   palette:
-    primary: cyan
+    primary: blue grey
+    accent: red
   features:
     - content.code.annotate 
+    - header.autohide
+    - navigation.tabs
+  language: ja
+  icon:
+    logo: fontawesome/solid/paw 
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -23,3 +29,26 @@ extra:
   social:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/ryuzozo1
+      name: ryuzozo
+    - icon: fontawesome/brands/twitch
+      link: https://www.twitch.tv/ryuzozo
+      name: ryuzozo
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/CdzXCaujbw
+      name: ryuzozo
+    - icon: fontawesome/brands/steam
+      link: https://steamcommunity.com/profiles/76561198066905199/
+      name: ryuzozo
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/channel/UCCAoRJqQFbE4wrR6jdzV0lQ/featured
+      name: ryuzozo
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+
+copyright: Copyright &copy; 2022 - ryuzozo
+
