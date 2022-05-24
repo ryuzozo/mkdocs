@@ -399,6 +399,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#minecraft" class="md-nav__link">
+    minecraft自動起動起動
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -558,6 +565,13 @@
           <li class="md-nav__item">
   <a href="#port-open" class="md-nav__link">
     port open
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minecraft" class="md-nav__link">
+    minecraft自動起動起動
   </a>
   
 </li>
@@ -736,6 +750,62 @@ pluginsディレクトリにuploadし再起動<BR></p>
 <h3 id="port-open">port open</h3>
 <p>minecraft:TCPの25565とUDPの19132<BR>
 Dynmap:8123</p>
+<h3 id="minecraft">minecraft自動起動起動</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">6</a></span>
+<span class="normal"><a href="#__codelineno-5-7">7</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>/mnt/xvdb/minecraft/start.sh
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>#!/bin/sh
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>SCREEN_NAME=&#39;minecraft&#39;
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>screen -UAmdS $SCREEN_NAME java -Xms1G -Xmx2G -jar /mnt/xvdb/minecraft/purpur-1.18.2-1626.jar nogui
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>/etc/systemd/system/minecraft_server.service
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>[Unit]
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>Description=Minecraft Server
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>After=network.target
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>[Service]
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>Type=forking
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a>WorkingDirectory=/mnt/xvdb/minecraft/
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a>ExecStart=/bin/bash /mnt/xvdb/minecraft/start.sh
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a>Restart=always
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a>User=root
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a>Group=root
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a>[Install]
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a>WantedBy=multi-user.target
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>systemctl daemon-reload
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>systemctl enable minecraft_server
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>systemctl start minecraft_server
+</code></pre></div>
+</td></tr></table>
 
               
             </article>
